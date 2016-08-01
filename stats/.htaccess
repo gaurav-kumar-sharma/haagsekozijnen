@@ -1,0 +1,7 @@
+AuthName "haagsekozijnen.thewebbuzz.com statistics"
+AuthType Basic
+AuthUserFile /home/haagsekozijnen/.stats-htpasswd
+require valid-user
+<Files .stats-htpasswd>
+deny from all
+</Files>

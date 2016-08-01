@@ -1,0 +1,28 @@
+# User specific & automatically generated files #
+#################################################
+/app/tmp
+/lib/Cake/Console/Templates/skel/tmp/
+app/Plugin
+/Plugin
+/Vendor
+/build
+/dist
+/tags
+!cache
+composer.phar
+
+
+# OS generated files #
+######################
+.DS_Store
+.settings
+.buildpath
+.project
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+/composer.lock
