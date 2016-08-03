@@ -50,7 +50,7 @@ class HomepageController extends AppController {
             if (isset($this->request->data['Composition'])) {
                 if ($this->request->data['Composition']['composition_id'] == 1) {
                     if (($this->request->data['Composition']['sub_cat_id'] == 1 || $this->request->data['Composition']['sub_cat_id'] == 2) && ($this->request->data['Composition']['sub_sub_cat_id'] == 1 || $this->request->data['Composition']['sub_sub_cat_id'] == 2 || $this->request->data['Composition']['sub_sub_cat_id'] == 3 || $this->request->data['Composition']['sub_sub_cat_id'] == 4 || $this->request->data['Composition']['sub_sub_cat_id'] == 5 || $this->request->data['Composition']['sub_sub_cat_id'] == 6)) {
-                        //$this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
+//                        $this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
                     } else {
                         $this->Flash->error('Please Select Options Properly');
                         $this->redirect($this->referer());
@@ -88,6 +88,9 @@ class HomepageController extends AppController {
     }
 
     public function set_colors($composition_id = null, $sub_cat_id = null, $sub_sub_cat_id = null) {
+        print_r($composition_id);
+        print_r($sub_cat_id);
+//        print_r($sub_sub_cat_id);;die;
         $this->layout = 'admin';
         $this->loadModel('ColorType');
         $this->loadModel('CompositionColor');
@@ -102,10 +105,14 @@ class HomepageController extends AppController {
         if ($this->request->is(array('post', 'put'))) {
             
             if ($composition_id == 1) {
+//                echo "asdf", print $composition_id;die;
                 $this->redirect(
                         array(
-                            'action' => 'final_view', $composition_id, $sub_cat_id, $sub_sub_cat_id,
+                            'action' => 'kunststof_main', $composition_id, $sub_cat_id, $sub_sub_cat_id,
                             '?' => array(
+                                'composition_id' =>  $composition_id,
+                                'sub_cat_id' => $sub_cat_id,
+                                'sub_sub_cat_id' => $sub_sub_cat_id,
                                 'buitenkader_color_type_id' => $this->request->data['Composition']['buitenkader_color_type_id'],
                                 'buitenkader_composition_color_id' => $this->request->data['Composition']['buitenkader_composition_color_id'],
                                 'draaidelen_buitenkader_color_type_id' => $this->request->data['Composition']['draaidelen_buitenkader_color_type_id'],
@@ -120,7 +127,7 @@ class HomepageController extends AppController {
                         )
                 );
             } else if ($composition_id == 2) {
-                
+                print $composition_id;die;
                 $this->redirect(
                         array(
                             'action' => 'final_view', $composition_id, $sub_cat_id, $sub_sub_cat_id,
@@ -134,6 +141,7 @@ class HomepageController extends AppController {
                         )
                 );
             } else { 
+                print $composition_id;die;
                 $this->redirect(
                         array(
                             'action' => 'final_view', $composition_id, $sub_cat_id, $sub_sub_cat_id,
@@ -176,6 +184,7 @@ class HomepageController extends AppController {
         $this->loadModel('HoutType');
         $this->loadModel('ColorType');
         $this->loadModel('Client');
+//        $this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
         $excel2=$this->PhpExcel->loadWorksheet(WWW_ROOT.'/files/worksheet-nieuw.xlsx');
 		$client_data = $this->Client->find('first', array('conditions' => array('Client.id' => $this->Session->read('current_client_id'))));
         if (empty($client_data)) {
@@ -559,8 +568,7 @@ class HomepageController extends AppController {
     }
 
     public function kunststof_main() {
-//        echo "hii";
-//        die;
+        echo "<pre>"; print_r($this->request->query);
         $this->layout = 'drag';
         if (!empty($this->request->query)) {
             if (isset($this->request->query['breedle'])) {
@@ -591,6 +599,28 @@ class HomepageController extends AppController {
         } else {
             //$this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
         }
+        
+        $this->loadModel('Composition');
+        $this->loadModel('SubCategory');
+        $this->loadModel('SubSubCategory');
+        $this->loadModel('CompositionColor'); 
+        $this->loadModel('HoutType');
+        $this->loadModel('ColorType');
+        $this->loadModel('Client');
+        
+        $extraInfo = array();
+        $extraInfo['buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['buitenkader_color_type_id'])));
+        $extraInfo['buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->query['buitenkader_composition_color_id'])));
+        $extraInfo['draaidelen_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['draaidelen_buitenkader_color_type_id'])));
+        $extraInfo['binnenzijde_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['binnenzijde_buitenkader_color_type_id'])));
+        $extraInfo['draaidelen_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->query['draaidelen_buitenkader_composition_color_id'])));
+        $extraInfo['binnenzijde_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->query['binnenzijde_buitenkader_composition_color_id'])));
+        $extraInfo['draaidelen_binnenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['draaidelen_binnenkader_color_type_id'])));
+       // $binnenzijde_binnenkader_color_type = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['binnenzijde_binnenkader_color_type_id'])));
+        $extraInfo['draaidelen_binnenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->query['draaidelen_binnenkader_composition_color_id'])));
+        
+        print_r($extraInfo);
+        
         $this->loadModel('Color');
         $colors = $this->Color->find('list', array('fields' => array('color_code', 'color_name')));
         $this->set(compact('colors'));
@@ -598,6 +628,7 @@ class HomepageController extends AppController {
         $this->set('second_c', $this->Session->read('second_c'));
         $this->set('third_c', $this->Session->read('third_c'));
         $this->set('first_c', $this->Session->read('first_c'));
+        $this->set('extraInfo', $extraInfo);
     }
 
     public function new_f() {

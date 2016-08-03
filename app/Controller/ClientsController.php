@@ -108,6 +108,7 @@ class ClientsController extends AppController {
                     $this->Session->write('current_client_id', $client_id);
                     $this->Flash->success(__('The Client has been saved.'));
                     return $this->redirect(array('controller' => 'homepage', 'action' => 'form_process'));
+//                    $this->redirect(array('controller' => 'homepage', 'action' => 'kunststof_main'));
                 } else {
                     $this->Flash->error(__('The client could not be saved. Please, try again.'));
                 }

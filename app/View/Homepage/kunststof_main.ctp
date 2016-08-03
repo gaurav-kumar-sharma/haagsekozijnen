@@ -25,6 +25,7 @@ if (!isset($info['kleur_binnen'])) {
 } else {
     $kleur_binnen = $info['kleur_binnen'];
 }
+//echo "<pre>";print_r($extraInfo);die;
 ?>
 <?php if ($info) { ?>
     <script type="text/javascript">
