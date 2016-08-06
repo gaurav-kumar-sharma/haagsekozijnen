@@ -382,3 +382,56 @@ Cache::config('_cake_model_', array(
     'serialize' => ($engine === 'File'),
     'duration' => $duration
 ));
+
+Configure::write('priceList', array(
+    'profile' => array (
+        'buitenkader' => array(
+            'verdiept-glad-wit-creme' => 25,
+            'vlak-glad-wit-creme' => 20,
+            'verdiept-glad-others' => 30, 
+            'vlak-glad-others' => 25,
+            'verdiept-nerf-wit-creme' => 30,
+            'vlak-nerf-wit-creme' => 25,
+            'verdiept-nerf-others' => 35, 
+            'vlak-nerf-others' => 30,
+        ),
+        'draaidelen-binnen' => array(
+            'verdiept-glad-wit-creme' => 20,
+            'vlak-glad-wit-creme' => 20,
+            'verdiept-glad-others' => 25, 
+            'vlak-glad-others' => 25,
+            'verdiept-nerf-wit-creme' => 25,
+            'vlak-nerf-wit-creme' => 25,
+            'verdiept-nerf-others' => 30, 
+            'vlak-nerf-others' => 30,
+        ),
+        'draaidelen-buiten' => array(
+            'verdiept-glad-wit-creme' => 30,
+            'vlak-glad-wit-creme' => 30,
+            'verdiept-glad-others' => 35, 
+            'vlak-glad-others' => 35,
+            'verdiept-nerf-wit-creme' => 35,
+            'vlak-nerf-wit-creme' => 35,
+            'verdiept-nerf-others' => 40, 
+            'vlak-nerf-others' => 40,
+        )
+        ),
+    'hang-en-sluitwerk' => array(
+        'hang-en-sluitwerk-ramen' => array(
+            'hang-en-sluitwerk-draai' => 50,
+            'hang-en-sluitwerk-draai-kiep' => 75,
+            'hang-en-sluitwerk-val' => 40,
+            'hang-en-sluitwerk-uitzet' => 145,
+            'hang-en-sluitwerk-stolp' => 125,
+        ),
+        'hang-en-sluitwerk-deuren' => array(
+            'hang-en-sluitwerk-draai' => 930,
+            'hang-en-sluitwerk-draai-kiep' => 145,
+            'hang-en-sluitwerk-draai-stolp' => 1045,
+            'hang-en-sluitwerk-draai-kiep-stolp' => 575,
+        ),
+        'hang-en-sluitwerk-plooiwanden' => array(
+            'hang-en-sluitwerk-draai-deel ' => 930,
+        ),
+        
+    )));

@@ -206,7 +206,7 @@
                                 <br/>
                                 <div class="row">
                                     <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-primary pull-right">Generate Excel File</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Ga Verder</button>
                                     </div>
                                 </div>
                                 <?php echo $this->Form->end(); ?>

@@ -26,10 +26,31 @@ if (!isset($info['kleur_binnen'])) {
     $kleur_binnen = $info['kleur_binnen'];
 }
 //echo "<pre>";print_r($extraInfo);die;
+//print_r(Configure::read("priceList"));die;
 ?>
 <?php if ($info) { ?>
     <script type="text/javascript">
+        priceStack = {}
+        var frame_mapping = new Array()
+        frame_mapping['drag3'] = 'vast raam enkele kader';
+        frame_mapping['drag5'] = 'draairaam links binnen open';
+
+        frame_mapping['drag7'] = 'draairaam rechts binnen open';
+        frame_mapping['drag1'] = 'vast raam enkele kader';
+        frame_mapping['drag35'] = 'uitzetraam';
+        
+        extraInfo = <?php echo json_encode($extraInfo); ?>;
+        priceList = <?php echo json_encode($priceList); ?>;
         jQuery(document).ready(function($) {
+            outerFrameW = <?php echo $info['breedle']; ?>;
+            outerFrameH = <?php echo $info['hoogte']; ?>;
+            price = calculateOuterFrameAssembly(outerFrameH, outerFrameW)
+            dims = '<div id=dragged_OuterFrameAssembly <h3><b>omtrek buitenkader</b></h3><br><label>Breedte</label>: ' + outerFrameW + ' mm' + '<br><label>Hoogte</label>: ' + outerFrameH + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text()+ '<br>' + '<label>Price</label>: ' + toFixed(price, 2) + '<hr/></div>';
+            
+            $("#fram_dim").append(dims);
+            priceStack['outerFrameAssembly'] = price
+            calculateTotal(priceStack);
+            $("#cost_set").show();
             counter = 0;
             $(".drag").draggable({
                 helper: 'clone',
@@ -79,11 +100,19 @@ if (!isset($info['kleur_binnen'])) {
                         var element = $(ui.draggable).clone();
                         element.addClass("tempclass");
                         $(this).append(element);
+//                        $(".tempclass").attr("id", "deel" + counter);
+                        draggedFrameId = ui.helper.attr('id')
+                        frameName = frame_mapping[draggedFrameId]
+                        frameIdByName = frameName.replace(/\ /g, "-")
+                        localStorage.setItem('frameNameID',frameIdByName)
+                        $(".tempclass").attr("frameId", frameIdByName);
                         $(".tempclass").attr("id", "deel" + counter);
                         $("#deel" + counter).removeClass("tempclass");
                         draggedNumber = ui.helper.attr('id').search(/drag([0-9])/)
                         itemDragged = "dragged" + RegExp.$1
                         $("#deel" + counter).addClass(itemDragged);
+                       
+                        
                     }
                 }
             });
@@ -293,7 +322,7 @@ if (!isset($info['kleur_binnen'])) {
                         <div id="tab1_div" class="tab-pane">
                             <div id="ramen" style="float:left;margin:10px;">
                                 <div class="row" style="margin-top:2%;">
-                                    <div class="col-md-2">
+<!--                                    <div class="col-md-2">
                                         <div style=" 
                                              border:5px solid #166D1A;
                                              position:absolute;
@@ -317,9 +346,9 @@ if (!isset($info['kleur_binnen'])) {
                                              background: aliceblue;" class="drag" id="drag2">
                                             <p class="p_l"> ROOSTER</p>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-2">
-                                        <div class="drag" id="drag3" style="  
+                                        <div class="drag" id="drag3" title='vast raam enkele kader' style="  
                                              position:absolute;
                                              border:9px double #166D1A;
                                              display: inline-block;
@@ -331,7 +360,7 @@ if (!isset($info['kleur_binnen'])) {
                                              ">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+<!--                                    <div class="col-md-2">
                                         <div class="drag" id="drag4" style="  position:absolute;
                                              border-width:8px ;
                                              border-style: double;
@@ -346,7 +375,7 @@ if (!isset($info['kleur_binnen'])) {
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <div class="drag" id="drag5" style=" 
+                                        <div class="drag" id="drag5" title='draairaam links binnen open' style=" 
                                              position:absolute;
                                              border:5px solid #166D1A;
                                              display: inline-block;
@@ -385,7 +414,7 @@ if (!isset($info['kleur_binnen'])) {
                                              font-size: 8px;
                                              background-color: aliceblue;
                                              background-image: url(/img/less.png);
-                                             background-size: 100% 100%; " class="drag" id="drag7">
+                                             background-size: 100% 100%; " class="drag" id="drag7" title='draairaam rechts binnen open'>
 
                                         </div>
                                     </div>
@@ -686,7 +715,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: aliceblue;"> 
                                             <p class="p_l"> ROOSTER</p>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-md-2">
                                         <div style="    
                                              border:5px solid #166D1A;
@@ -697,11 +726,11 @@ if (!isset($info['kleur_binnen'])) {
                                              font-size: 8px;
                                              background-color: aliceblue;
                                              background-image: url(/img/down.png) ;
-                                             background-size: 100% 100%;" class="drag" id="drag35">
+                                             background-size: 100% 100%;" class="drag" id="drag35" title='uitzetraam'>
 
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+<!--                                    <div class="col-md-2">
                                         <div style="    
                                              border:5px solid #166D1A;
                                              width: 20mm;
@@ -883,7 +912,7 @@ if (!isset($info['kleur_binnen'])) {
                                                ;
                                                ">   
                                             </p>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div> 
@@ -2030,18 +2059,22 @@ if (!isset($info['kleur_binnen'])) {
     </div>
     <?php if ($info) { ?> 
         <div class="row" id="cost_set" style="display:none; text-align:right;margin-top: 2%; padding-right:5%;w">
-            <label>
+            <div>
                 <b>betreft:  </b>leveren en plaatsen met binnenafwerking
-            </label><br>
-            <label>
-                <b>prijs:  </b>350 euro
-            </label><br>
-            <label>
-                <b>Btw 21%:  </b>73.5 euro
-            </label><br>
-            <label>
-                <b>prijs incl btw :  </b>423.50 euro
-            </label><br>
+            <br>
+            </div>
+            <div>
+               <div id="mainAmount">00 euro</div>
+            </div>
+            <br>
+            <div>
+                <div id="totalVat">00 euro</div>
+            </div>
+            <br>
+            <div>
+                <div id="totalAmount">00 euro</div>
+            </div>
+            <br>
         </div>
         <div class="row" style="padding-right:5%;">
             <?php echo $this->Html->link('Ga verder', array('controller' => 'homepage', 'action' => 'finish_frame'), array('class' => 'btn btn-primary pull-right')); ?>
@@ -2050,9 +2083,12 @@ if (!isset($info['kleur_binnen'])) {
 </div>
 
 <script>
+    
     jQuery(document).ready(function($) {
         $(".drag,.ui-draggable").click(function() {
             localStorage.setItem('framId', $(this).attr('id'));
+//            alert($(this).attr('frameid'))
+            localStorage.setItem('frameNameID', $(this).attr('frameid'))
             var targeted_popup_class = jQuery(this).attr('data-popup-open');
             $('[data-popup="popup-1"]').fadeIn(350);
 
@@ -2075,7 +2111,15 @@ if (!isset($info['kleur_binnen'])) {
                 $("#" + framId).css('border-color', buit);
                 //$("#" + framId).css('background-style', $("#" + framId).css('border-style'));
                 $('[data-popup="popup-1"]').fadeOut(350);
-                dims = '<div id=dragged_' + framId + ' <h3><b>' + framId + '</b></h3><br><label>Breedte</label>: ' + $("#frame_breedle").val() + ' mm' + '<br><label>Hoogte</label>: ' + $("#frame_hoogte").val() + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text() + '<hr/></div>';
+//                frame_mapping[fram]
+                frameNameID = localStorage.getItem('frameNameID');
+                frameName = frameNameID.replace(/\-/g, " ")
+                width = $("#frame_breedle").val();
+                height = $("#frame_hoogte").val()
+                price = frameCalculation(frameName, height, width)
+                priceStack[framId] = price
+                dims = '<div id=dragged_' + framId + ' <h3><b>' + framId+' : '+frameName + '</b></h3><br><label>Breedte</label>: ' + $("#frame_breedle").val() + ' mm' + '<br><label>Hoogte</label>: ' + $("#frame_hoogte").val() + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text()+ '<br>' + '<label>Price</label>: ' + toFixed(price, 2) + '<hr/></div>';
+                calculateTotal(priceStack)
                 var elem = $("#fram_dim").find('#dragged_' + framId);
                 if (elem) {
                     $(elem).remove();
@@ -2093,6 +2137,9 @@ if (!isset($info['kleur_binnen'])) {
             $("#" + framId_to_delete).remove();
             $("#dragged_" + framId_to_delete).remove();
             $('[data-popup="popup-1"]').fadeOut(350);
+            delete(priceStack[framId_to_delete])
+            calculateTotal(priceStack)
+            
         });
         $('[data-popup-close]').click(function(e) {
             $('[data-popup="popup-1"]').fadeOut(350);
@@ -2100,6 +2147,91 @@ if (!isset($info['kleur_binnen'])) {
         });
 
     });
+    
+    function frameCalculation(frameName, height, width) {
+        height  = parseFloat(height)
+        width  = parseFloat(width)
+        if (frameName == 'vast raam enkele kader') {
+            priceUnit = 75
+            surface = (height/1000) * (width/1000)
+            price = surface * priceUnit
+            return price
+        } else {
+            totalPrice = frameProfileCalculation(frameName, height, width) + hangingCalculation(frameName, height, width) + glassCalculation(frameName, height, width);
+            return totalPrice
+        }
+    }
+    
+    function frameProfileCalculation(frameName, height, width) {
+        if (frameName == 'uitzetraam') {
+            nameInPriceList = ''
+            nameInPriceList += extraInfo['sub_sub_cat'].toLowerCase()+'-'
+            nameInPriceList += extraInfo['draaidelen_buitenkader_color_type']+'-';
+            if (extraInfo['draaidelen_buitenkader_composition_color'] == 'wit' || 
+                    extraInfo['draaidelen_buitenkader_composition_color'] == 'creme') {
+                nameInPriceList += 'wit-creme';
+            } else {
+                nameInPriceList += extraInfo['others']
+            }
+            rate = priceList['profile']['draaidelen-buiten'][nameInPriceList];
+            
+            price = (2*(height+width)/1000)*rate
+            return price
+        }
+    }
+    
+    function hangingCalculation(frameName, height, width) {
+        quantity = 1
+        hangType = 'hang-en-sluitwerk';
+        if (frameName == 'uitzetraam') {
+            hangType += '-uitzet'
+        }
+        rate = priceList['hang-en-sluitwerk']['hang-en-sluitwerk-ramen'][hangType];
+        console.log(priceList)
+        price = quantity*rate;
+        return price
+    }
+    
+    
+    function glassCalculation(frameName, height, width) {
+        glassCostPerUnit = 75
+        price = (glassCostPerUnit*height*width)/(1000*1000)
+        return price
+    }
+    
+    function calculateTotal(prices) {
+        mainAmount = 0
+        $.each(prices, function(index, value){
+            mainAmount += value
+        });
+        totalVat = mainAmount*.21
+        totalAmount = mainAmount+totalVat
+        $("div#mainAmount").html(' <b>prijs:  </b> '+ toFixed( mainAmount, 2)+" euro");
+        $("div#totalVat").html('<b>Btw 21%:  </b> '+ toFixed(totalVat, 2)+" euro");
+        $("div#totalAmount").html('<b>prijs incl btw :  </b>'+ toFixed(totalAmount, 2)+" euro");
+        
+    }
+    
+    function toFixed(value, precision) {
+        var precision = precision || 0,
+            power = Math.pow(10, precision),
+            absValue = Math.abs(Math.round(value * power)),
+            result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
+
+        if (precision > 0) {
+            var fraction = String(absValue % power),
+                padding = new Array(Math.max(precision - fraction.length, 0) + 1).join('0');
+            result += '.' + padding + fraction;
+        }
+        return result;
+    }
+    
+    function calculateOuterFrameAssembly(height, width) {
+        rate = 55
+        price = 2*(parseFloat(height)+parseFloat(width))/1000
+        totalPrice = price * rate
+        return totalPrice
+    }
 </script>
 <script>
     $("#tab1").click(function() {
