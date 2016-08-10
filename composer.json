@@ -1,5 +1,5 @@
 {
-    "name": "beachbody/coreframework",
+    "name": "microservices-coreframework",
     "description": "Plugins for BeachBody",
     "type": "library",
     "license": "BSD-3-Clause",
@@ -30,11 +30,6 @@
         "branch-alias": {
             
         }
-    },
-    "require": {
-        "gaurav-kumar-sharma/haagsekozijnen": "1.0"
-    },
-    "require-dev": {
-        "gaurav-kumar-sharma/haagsekozijnen": "1.0"
     }
+    
 }
