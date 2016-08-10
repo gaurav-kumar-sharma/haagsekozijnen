@@ -1,5 +1,5 @@
 {
-    "name": "microservices-coreframework",
+    "name": "beachbody/coreframework",
     "description": "Plugins for BeachBody",
     "type": "library",
     "license": "BSD-3-Clause",
