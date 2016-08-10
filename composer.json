@@ -1,35 +1,17 @@
 {
     "name": "coreframework",
-    "description": "Plugins for BeachBody",
     "type": "library",
-    "license": "BSD-3-Clause",
-    "keywords": [
-        "api",
-        "apigility",
-        "framework",
-        "zf2"
-    ],
-    "repositories": [
+    "description": "library for Beachbody plugins",
+    "keywords": ["logging", "AppLogger", "Error", "ErrorManagement", "memcache", "memcacheManager", "Swagger" ],
+    "homepage": "https://github.com/beachbodydigital/microservices-coreframework",
+    "authors": [
         {
-            "type": "vcs",
-            "url": "https://github.com/gaurav-kumar-sharma/haagsekozijnen"
+            "name": "Beachbody Digital",
+            "email": "",
+            "homepage": "https://club.teambeachbody.com/",
         }
     ],
-    "homepage": "http://apigility.org/",
-    "support": {
-        "email": "gsharma@beachbody.com",
-        "irc": "irc://irc.freenode.net/apigility",
-        "source": "https://github.com/gaurav-kumar-sharma/haagsekozijnen.git",
-        "issues": "https://github.com/gaurav-kumar-sharma/haagsekozijnen.git"
-    },
-    "config": {
-        "process-timeout": 5000,
-        "vendor-dir": "plugins"
-    },
-    "extra": {
-        "branch-alias": {
-            
-        }
+    "require": {
+        "php": ">=5.6.0"
     }
-    
 }
