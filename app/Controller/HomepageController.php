@@ -657,6 +657,7 @@ class HomepageController extends AppController {
             } 
         }
         $priceList = Configure::read('priceList');
+        $catList = Configure::read('CategoryList');
 //        echo "<pre>";print_r($formattedInfo);die;
 //        echo "<pre>";print_r($priceList);die;
 //        $this->Session->write(extraInfo, $value);
@@ -670,6 +671,7 @@ class HomepageController extends AppController {
         $this->set('first_c', $this->Session->read('first_c'));
         $this->set('extraInfo', $formattedInfo);
         $this->set('priceList', $priceList);
+        $this->set('catList', $catList);
     }
 
     public function new_f() {

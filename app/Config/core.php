@@ -422,7 +422,7 @@ Configure::write('priceList', array(
             'hang-en-sluitwerk-draai-kiep' => 75,
             'hang-en-sluitwerk-val' => 40,
             'hang-en-sluitwerk-uitzet' => 145,
-            'hang-en-sluitwerk-stolp' => 125,
+            'hang-en-sluitwerk-draai-stolp' => 125,
         ),
         'hang-en-sluitwerk-deuren' => array(
             'hang-en-sluitwerk-draai' => 930,
@@ -435,3 +435,27 @@ Configure::write('priceList', array(
         ),
         
     )));
+
+Configure::write('CategoryList', array(
+    'category' => array(),
+    'profileCat' => array(
+        1 => 'binnen',
+        2 => 'buiten'
+    ),
+    'hangCat' => array(
+        1 => 'ramen',
+        2 => 'deuren',
+        3 => 'plooiwanden',
+        4 => ' kiep-hefschuifpuien'
+        
+    ),
+    'hangSubCat' => array(
+        1 => 'draai',
+        2 => 'draai-kiep',
+        3 => 'val',
+        4 => 'uitzet',
+        5 => 'draai-stolp',
+        6 => 'draai-kiep-stolp',
+        7 => 'draai-deel',
+    ),
+    ));
