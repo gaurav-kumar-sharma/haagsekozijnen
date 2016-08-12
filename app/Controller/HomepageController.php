@@ -191,6 +191,10 @@ class HomepageController extends AppController {
         $compositions = $this->Composition->find('list', array('fields' => array('id', 'composition_name')));
         $this->set(compact('composition_id', 'compositions', 'sub_sub_cat_name', 'sub_cat_name'));
     }
+    
+    public function generate_excel() {
+        
+    }
 
     public function final_view($composition_id = null, $sub_cat_id = null, $sub_sub_cat_id = null) {
 		ini_set('max_execution_time', 0);

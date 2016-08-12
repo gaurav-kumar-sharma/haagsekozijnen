@@ -2118,6 +2118,15 @@ if (!isset($info['kleur_binnen'])) {
                 $("#" + framId).css('border-color', buit);
                 //$("#" + framId).css('background-style', $("#" + framId).css('border-style'));
                 $('[data-popup="popup-1"]').fadeOut(350);
+                
+                if (!('peripheri' in priceStack)) {
+                    price = calculatePeripheri()
+                    dims = '<div id=dragged_peripheri <h3><b>Profielen buitenkader</b></h3><br><label>Breedte</label>: ' + <?php echo $info['breedle']; ?> + ' mm' + '<br><label>Hoogte</label>: ' + <?php echo $info['hoogte']; ?> + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text()+ '<br>' + '<label>Price</label>: ' + toFixed(price, 2) + '<hr/></div>';
+            
+                    $("#fram_dim").append(dims);
+                    priceStack['peripheri'] = price
+                    calculateTotal(priceStack);
+                }
 //                frame_mapping[fram]
                 frameNameID = localStorage.getItem('frameNameID');
                 frameName = frameNameID.replace(/\-/g, " ")
@@ -2240,20 +2249,24 @@ if (!isset($info['kleur_binnen'])) {
         if (catArr['profileCat'] == 2) {
             colorProfile = "buiten"
         }
+        
         color = colorArr[colorProfile]
         colArr = color.split(" ")
         colorType = colArr[1]
         compositionColor = colArr[0]
-        priceType += extraInfo[colorType]+'-';
-            if (extraInfo[compositionColor] == 'wit' || 
-                    extraInfo[compositionColor] == 'creme') {
+        priceType += colorType +'-';
+            if (compositionColor == 'wit' || 
+                    compositionColor == 'creme') {
                 priceType += 'wit-creme';
             } else {
-                priceType += extraInfo['others']
+                priceType += 'others'
             }
             rate = priceList['profile']['draaidelen-buiten'][priceType];
-            
+            alert(priceType)
+            alert(rate)
             price = (2*(height+width)/1000)*rate
+            alert('profile')
+            alert(price)
             return price
         
     }
@@ -2262,12 +2275,14 @@ if (!isset($info['kleur_binnen'])) {
     function hangingCalculation(catArr) {
         quantity = 1
         hangCat = 'hang-en-sluitwerk-';
-        hangCat += catList[catArr['hangCat']]
+        hangCat += catList['hangCat'][catArr['hangCat']]
         hangType = 'hang-en-sluitwerk-';
-        hangType += catList[catArr['hangSubCat']]
+        hangType += catList['hangSubCat'][catArr['hangSubCat']]
         rate = priceList['hang-en-sluitwerk'][hangCat][hangType];
         console.log(priceList)
         price = quantity*rate;
+        alert('hang')
+        alert(price)
         return price
     }
     
