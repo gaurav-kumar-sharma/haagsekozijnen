@@ -103,15 +103,18 @@ if (!isset($info['kleur_binnen'])) {
                         $(this).append(element);
 //                        $(".tempclass").attr("id", "deel" + counter);
                         draggedFrameId = ui.helper.attr('id')
-                        frameName = frame_mapping[draggedFrameId]
-                        frameIdByName = frameName.replace(/\ /g, "-")
-                        localStorage.setItem('frameNameID',frameIdByName)
+                        frameTitle = ui.helper.attr('title')
+//                        frameName = frame_mapping[draggedFrameId]
+//                        frameIdByName = frameName.replace(/\ /g, "-")
+//                        localStorage.setItem('frameNameID',frameIdByName)
                         localStorage.setItem('category',ui.helper.attr('category'))
                         localStorage.setItem('profileCat',ui.helper.attr('profileCat'))
                         localStorage.setItem('hangCat',ui.helper.attr('hangCat'))
                         localStorage.setItem('hangSubCat',ui.helper.attr('hangSubCat'))
+                        localStorage.setItem('frameTitle',frameTitle)
                         
-                        $(".tempclass").attr("frameId", frameIdByName);
+//                        $(".tempclass").attr("frameId", frameIdByName);
+//                        $(".tempclass").attr("frameTitle", frameTitle);
                         $(".tempclass").attr("id", "deel" + counter);
                         $("#deel" + counter).removeClass("tempclass");
                         draggedNumber = ui.helper.attr('id').search(/drag([0-9])/)
@@ -2094,7 +2097,6 @@ if (!isset($info['kleur_binnen'])) {
     jQuery(document).ready(function($) {
         $(".drag,.ui-draggable").click(function() {
             localStorage.setItem('framId', $(this).attr('id'));
-//            alert($(this).attr('frameid'))
             localStorage.setItem('frameNameID', $(this).attr('frameid'))
             var targeted_popup_class = jQuery(this).attr('data-popup-open');
             $('[data-popup="popup-1"]').fadeIn(350);
@@ -2129,8 +2131,9 @@ if (!isset($info['kleur_binnen'])) {
                     calculateTotal(priceStack);
                 }
 //                frame_mapping[fram]
-                frameNameID = localStorage.getItem('frameNameID');
-                frameName = frameNameID.replace(/\-/g, " ")
+//                frameNameID = localStorage.getItem('frameNameID');
+//                frameName = frameNameID.replace(/\-/g, " ")
+                frameName = localStorage.getItem('frameTitle');
                 width = $("#frame_breedle").val();
                 height = $("#frame_hoogte").val();
                 colorArr = new Array();
@@ -2263,11 +2266,7 @@ if (!isset($info['kleur_binnen'])) {
                 priceType += 'others'
             }
             rate = priceList['profile']['draaidelen-buiten'][priceType];
-            alert(priceType)
-            alert(rate)
             price = (2*(height+width)/1000)*rate
-            alert('profile')
-            alert(price)
             return price
         
     }
@@ -2282,8 +2281,6 @@ if (!isset($info['kleur_binnen'])) {
         rate = priceList['hang-en-sluitwerk'][hangCat][hangType];
         console.log(priceList)
         price = quantity*rate;
-        alert('hang')
-        alert(price)
         return price
     }
     

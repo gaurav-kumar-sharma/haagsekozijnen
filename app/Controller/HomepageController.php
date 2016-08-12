@@ -197,7 +197,7 @@ class HomepageController extends AppController {
         if (isset($this->request->query['total'])) {
             $total = $this->request->query['total'];
         }
-        echo "<pre>";print_r($total);die;
+        
         $extraInfo  = $this->Session->read('extraInfo');
         $excel2=$this->PhpExcel->loadWorksheet(WWW_ROOT.'/files/worksheet-nieuw.xlsx');
         $this->loadModel('Client');
