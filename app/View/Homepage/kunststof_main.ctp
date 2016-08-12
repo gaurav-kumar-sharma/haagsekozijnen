@@ -2084,6 +2084,7 @@ if (!isset($info['kleur_binnen'])) {
         </div>
         <div class="row" style="padding-right:5%;">
             <?php echo $this->Html->link('Ga verder', array('controller' => 'homepage', 'action' => 'finish_frame'), array('class' => 'btn btn-primary pull-right')); ?>
+            <a id="generateExcel" href="/homepage/generateExcelKunststof?" class="btn btn-primary pull-right">Generate Excel</a>
         </div>
     <?php } ?>
 </div>
@@ -2303,7 +2304,11 @@ if (!isset($info['kleur_binnen'])) {
         $("div#mainAmount").html(' <b>prijs:  </b> '+ toFixed( mainAmount, 2)+" euro");
         $("div#totalVat").html('<b>Btw 21%:  </b> '+ toFixed(totalVat, 2)+" euro");
         $("div#totalAmount").html('<b>prijs incl btw :  </b>'+ toFixed(totalAmount, 2)+" euro");
-        
+        //setting total to post
+        url = $("a#generateExcel").attr('href');
+        urlArr = url.split("?");
+        url = urlArr[0]+"?total="+toFixed(totalAmount, 2);
+        $("a#generateExcel").attr('href', url);
     }
     
     function toFixed(value, precision) {
