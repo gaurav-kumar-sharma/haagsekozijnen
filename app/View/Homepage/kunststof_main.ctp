@@ -2070,10 +2070,15 @@ if (!isset($info['kleur_binnen'])) {
         <div class="row" id="cost_set" style="display:none; text-align:right;margin-top: 2%; padding-right:5%;w">
             <div>
                 <b>betreft:  </b>leveren en plaatsen met binnenafwerking
-            <br>
+           
             </div>
+             <br>
             <div>
                <div id="mainAmount">00 euro</div>
+            </div>
+             <br>
+            <div>
+               <div id="assemblyAmount">00 euro</div>
             </div>
             <br>
             <div>
@@ -2086,7 +2091,7 @@ if (!isset($info['kleur_binnen'])) {
             <br>
         </div>
         <div class="row" style="padding-right:5%;">
-            <?php echo $this->Html->link('Ga verder', array('controller' => 'homepage', 'action' => 'finish_frame'), array('class' => 'btn btn-primary pull-right')); ?>
+            <?php // echo $this->Html->link('Ga verder', array('controller' => 'homepage', 'action' => 'finish_frame'), array('class' => 'btn btn-primary pull-right')); ?>
             <a id="generateExcel" href="/homepage/generateExcelKunststof?" class="btn btn-primary pull-right">Generate Excel</a>
         </div>
     <?php } ?>
@@ -2150,7 +2155,7 @@ if (!isset($info['kleur_binnen'])) {
                 console.log(catArr)
                 price = frameCalculation(frameName, height, width, colorArr, catArr)
                 priceStack[framId] = price
-                dims = '<div id=dragged_' + framId + ' <h3><b>' + framId+' : '+frameName + '</b></h3><br><label>Breedte</label>: ' + $("#frame_breedle").val() + ' mm' + '<br><label>Hoogte</label>: ' + $("#frame_hoogte").val() + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text()+ '<br>' + '<label>Price</label>: ' + toFixed(price, 2) + '<hr/></div>';
+                dims = '<div id=dragged_' + framId + ' <h3><b>' + frameName + '</b></h3><br><label>Breedte</label>: ' + $("#frame_breedle").val() + ' mm' + '<br><label>Hoogte</label>: ' + $("#frame_hoogte").val() + ' mm' + '<br>' + '<label>Kleur</label>: ' + $("#kleur_binnen_id option:selected").text()+ '<br>' + '<label>Price</label>: ' + toFixed(price, 2) + '<hr/></div>';
                 calculateTotal(priceStack)
                 var elem = $("#fram_dim").find('#dragged_' + framId);
                 if (elem) {
@@ -2294,11 +2299,15 @@ if (!isset($info['kleur_binnen'])) {
      function calculateTotal(prices) {
         mainAmount = 0
         $.each(prices, function(index, value){
-            mainAmount += value
+            if (index != 'outerFrameAssembly') {
+                mainAmount += value;
+            }
         });
-        totalVat = mainAmount*.21
-        totalAmount = mainAmount+totalVat
-        $("div#mainAmount").html(' <b>prijs:  </b> '+ toFixed( mainAmount, 2)+" euro");
+        assemblyAmount = prices['outerFrameAssembly'];
+        totalVat = (mainAmount+assemblyAmount)*.21
+        totalAmount = (mainAmount+assemblyAmount+totalVat)
+        $("div#mainAmount").html(' <b>prijs (Kozijn):  </b> '+ toFixed( mainAmount, 2)+" euro");
+        $("div#assemblyAmount").html(' <b>prijs(Montage):  </b> '+ toFixed( assemblyAmount, 2)+" euro");
         $("div#totalVat").html('<b>Btw 21%:  </b> '+ toFixed(totalVat, 2)+" euro");
         $("div#totalAmount").html('<b>prijs incl btw :  </b>'+ toFixed(totalAmount, 2)+" euro");
         //setting total to post
