@@ -415,7 +415,7 @@ Configure::write('priceList', array(
             'verdiept-nerf-others' => 40, 
             'vlak-nerf-others' => 40,
         )
-        ),
+    ),
     'hang-en-sluitwerk' => array(
         'hang-en-sluitwerk-ramen' => array(
             'hang-en-sluitwerk-draai' => 50,
@@ -434,7 +434,13 @@ Configure::write('priceList', array(
             'hang-en-sluitwerk-draai-deel ' => 930,
         ),
         
-    )));
+    ),
+    'paneel' => array(
+      'glad' => 100,
+      'nerf' => 145,
+      'schrootjes' => 175
+    ),
+    ));
 
 Configure::write('CategoryList', array(
     'category' => array(),
@@ -458,4 +464,10 @@ Configure::write('CategoryList', array(
         6 => 'draai-kiep-stolp',
         7 => 'draai-deel',
     ),
+    
+    'paneelCat' => array(
+        1 => 'glad',
+        2 => 'nerf',
+        3 => 'schrootjes'
+    )
     ));

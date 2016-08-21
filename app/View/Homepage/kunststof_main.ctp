@@ -111,7 +111,9 @@ if (!isset($info['kleur_binnen'])) {
                         localStorage.setItem('profileCat',ui.helper.attr('profileCat'))
                         localStorage.setItem('hangCat',ui.helper.attr('hangCat'))
                         localStorage.setItem('hangSubCat',ui.helper.attr('hangSubCat'))
+                        localStorage.setItem('paneelCat',ui.helper.attr('paneelCat'))
                         localStorage.setItem('frameTitle',frameTitle)
+                        
                         
 //                        $(".tempclass").attr("frameId", frameIdByName);
 //                        $(".tempclass").attr("frameTitle", frameTitle);
@@ -323,14 +325,52 @@ if (!isset($info['kleur_binnen'])) {
                         <li class="tabs" id="tab_li_2">
                             <a data-toggle="tab" id='tab2' href="#tab2-slug">Deuren</a>
                         </li>
-                        <li class="tabs active" id="tab_li_3">
-                            <a data-toggle="tab" id='tab3' href="#tab3-slug">New Drawings</a>
+                        <li class="tabs" id="tab_li_3">
+                            <a data-toggle="tab" id='tab3' href="#tab3-slug">Schuifpuien</a>
+                        </li>
+                        <li class="tabs" id="tab_li_4">
+                            <a data-toggle="tab" id='tab4' href="#tab4-slug">Plooiwanden</a>
+                        </li>
+                        <li class="tabs" id="tab_li_5">
+                            <a data-toggle="tab" id='tab5' href="#tab5-slug">Diverse</a>
+                        </li>
+                        <li class="tabs active" id="tab_li_6">
+                            <a data-toggle="tab" id='tab6' href="#tab6-slug">New Drawings</a>
                         </li>
                     </ul>
                     <div id="my-tab-content" class="tab-content">
                         <div id="tab1_div" class="tab-pane">
                             <div id="ramen" style="float:left;margin:10px;">
                                 <div class="row" style="margin-top:2%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag1" title='vast raam enkele kader' style="    
+					     border: 4px solid #ffffcc;
+                                             width: 30mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background:skyblue;
+                                             box-shadow: 0 0 1px black;position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag2" title='vast raam dubbele kader' style="  
+                                             box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
+                                             width: 20mm;
+                                             height: 12mm;
+                                             background-color: skyblue;margin-top: 9px;position:absolute;}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag3" title='verhuislook raam' style="  
+                                             box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
+                                             width: 20mm;
+                                             height: 12mm;
+                                             background-color: skyblue;margin-top: 9px;position:absolute;}">
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                <div class="row" style="margin-top:2%;">
                                     <div class="col-md-2">
                                         <div style=" 
                                              border:5px solid #166D1A;
@@ -427,7 +467,7 @@ if (!isset($info['kleur_binnen'])) {
 
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="row" style="margin-top:15%;">
                                     <div class="col-md-2">
                                         <div style="position:absolute; 
@@ -927,6 +967,15 @@ if (!isset($info['kleur_binnen'])) {
                             </div> 
                         </div>
                         <div id="tab3_div" class="tab-pane active">
+                            <div id="schuifpuien" style="float:left;margin:10px;">
+                                <div class="row"></div></div></div>
+                        <div id="tab4_div" class="tab-pane active">
+                            <div id="plooiwanden" style="float:left;margin:10px;">
+                                <div class="row"></div></div></div>
+                        <div id="tab5_div" class="tab-pane active">
+                            <div id="diverse" style="float:left;margin:10px;">
+                                <div class="row"></div></div></div>
+                        <div id="tab6_div" class="tab-pane active">
                             <div id="deuren" style="float:left;margin:10px;">
                                 <div class="row">
                                     <div class="col-md-2">
@@ -2151,6 +2200,7 @@ if (!isset($info['kleur_binnen'])) {
                 catArr['profileCat'] = localStorage.getItem('profileCat');
                 catArr['hangCat'] = localStorage.getItem('hangCat');
                 catArr['hangSubCat'] = localStorage.getItem('hangSubCat');
+                catArr['paneelCat'] = localStorage.getItem('paneelCat');
                 console.log("catArr")
                 console.log(catArr)
                 price = frameCalculation(frameName, height, width, colorArr, catArr)
@@ -2211,6 +2261,10 @@ if (!isset($info['kleur_binnen'])) {
                 return (hangingCalculation(catArr) + glassCalculation(height, width));
             case 10:
                 return (frameProfileCalculation(height, width, colorArr, catArr) + hangingCalculation(catArr) + glassCalculation(height, width));
+            case 11:
+                return onlyWidthCalculation(width);
+            case 12:
+                return surfacePaneel(height, width, catArr);
             default:
                 return NoCalculation();
         }
@@ -2234,70 +2288,84 @@ if (!isset($info['kleur_binnen'])) {
     function calculatePeripheri() {
         width = <?php echo $info['breedle']; ?>;
         height =  <?php echo $info['hoogte']; ?>;
-        nameInPriceList = ''
-            nameInPriceList += extraInfo['sub_sub_cat'].toLowerCase()+'-'
+        nameInPriceList = '';
+            nameInPriceList += extraInfo['sub_sub_cat'].toLowerCase()+'-';
             nameInPriceList += extraInfo['draaidelen_buitenkader_color_type']+'-';
             if (extraInfo['draaidelen_buitenkader_composition_color'] == 'wit' || 
                     extraInfo['draaidelen_buitenkader_composition_color'] == 'creme') {
                 nameInPriceList += 'wit-creme';
             } else {
-                nameInPriceList += extraInfo['others']
+                nameInPriceList += extraInfo['others'];
             }
             rate = priceList['profile']['draaidelen-buiten'][nameInPriceList];
             
-            price = (2*(height+width)/1000)*rate
-            return price
+            price = (2*(height+width)/1000)*rate;
+            return price;
     }
     
       // Step 1 calculation (category : 4)
     function frameProfileCalculation(height, width, colorArr, catArr) {
         profileType = 'draaidelen' + catList[catArr['profileCat']];
-        priceType = ''
-        priceType += extraInfo['sub_sub_cat'].toLowerCase()+'-'
-        colorProfile = 'binnen'
+        priceType = '';
+        priceType += extraInfo['sub_sub_cat'].toLowerCase()+'-';
+        colorProfile = 'binnen';
         if (catArr['profileCat'] == 2) {
-            colorProfile = "buiten"
+            colorProfile = "buiten";
         }
         
-        color = colorArr[colorProfile]
-        colArr = color.split(" ")
-        colorType = colArr[1]
-        compositionColor = colArr[0]
+        color = colorArr[colorProfile];
+        colArr = color.split(" ");
+        colorType = colArr[1];
+        compositionColor = colArr[0];
         priceType += colorType +'-';
             if (compositionColor == 'wit' || 
                     compositionColor == 'creme') {
                 priceType += 'wit-creme';
             } else {
-                priceType += 'others'
+                priceType += 'others';
             }
             rate = priceList['profile']['draaidelen-buiten'][priceType];
-            price = (2*(height+width)/1000)*rate
-            return price
+            price = (2*(height+width)/1000)*rate;
+            return price;
         
     }
     
     // step 2 calculation (category : 5)
     function hangingCalculation(catArr) {
-        quantity = 1
+        quantity = 1;
         hangCat = 'hang-en-sluitwerk-';
-        hangCat += catList['hangCat'][catArr['hangCat']]
+        hangCat += catList['hangCat'][catArr['hangCat']];
         hangType = 'hang-en-sluitwerk-';
-        hangType += catList['hangSubCat'][catArr['hangSubCat']]
+        hangType += catList['hangSubCat'][catArr['hangSubCat']];
         rate = priceList['hang-en-sluitwerk'][hangCat][hangType];
-        console.log(priceList)
+        console.log(priceList);
         price = quantity*rate;
-        return price
+        return price;
     }
     
     // step 3 calculation (category : 6)
     function glassCalculation(height, width) {
-        glassCostPerUnit = 75
-        price = (glassCostPerUnit*height*width)/(1000*1000)
-        return price
+        glassCostPerUnit = 75;
+        price = (glassCostPerUnit*height*width)/(1000*1000);
+        return price;
+    }
+    // width calculation (category : 11)
+    function onlyWidthCalculation(width) {
+        unitRate = 1;
+        price = width * unitPrice;
+        return price;
+    }
+    
+    // surface paneel (category 12)
+    function surfacePaneel(heigth, width, catArr) {
+        area = (heigth * width)/(1000 * 1000);
+        paneelType = catList['paneelCat'][catArr['paneelCat']];
+        paneelPrice = priceList[paneelType];
+        price = area * paneelPrice;
     }
     
      function calculateTotal(prices) {
-        mainAmount = 0
+        mainAmount = 0;
         $.each(prices, function(index, value){
             if (index != 'outerFrameAssembly') {
                 mainAmount += value;
@@ -2318,9 +2386,9 @@ if (!isset($info['kleur_binnen'])) {
     }
     
     function toFixed(value, precision) {
-        var precision = precision || 0,
-            power = Math.pow(10, precision),
-            absValue = Math.abs(Math.round(value * power)),
+        var precision = precision || 0;
+            power = Math.pow(10, precision);
+            absValue = Math.abs(Math.round(value * power));
             result = (value < 0 ? '-' : '') + String(Math.floor(absValue / power));
 
         if (precision > 0) {
@@ -2332,44 +2400,77 @@ if (!isset($info['kleur_binnen'])) {
     }
     
     function calculateOuterFrameAssembly(height, width) {
-        rate = 55
-        price = 2*(parseFloat(height)+parseFloat(width))/1000
-        totalPrice = price * rate
-        return totalPrice
+        rate = 55;
+        price = 2*(parseFloat(height)+parseFloat(width))/1000;
+        totalPrice = price * rate;
+        return totalPrice;
     }
 </script>
 <script>
     $("#tab1").click(function() {
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
         $("#tab_li_1").addClass('active');
-        $("#tab_li_2").removeClass('active');
-        $("#tab_li_3").removeClass('active');
         $("#tab1_div").addClass('active');
-        $("#tab2_div").removeClass('active');
-        $("#tab3_div").removeClass('active');
         $("#tab1_div").show();
-        $("#tab2_div").hide();
-        $("#tab3_div").hide();
     });
     $("#tab2").click(function() {
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
         $("#tab_li_2").addClass('active');
-        $("#tab_li_1").removeClass('active');
-        $("#tab_li_3").removeClass('active');
         $("#tab2_div").addClass('active');
-        $("#tab1_div").removeClass('active');
-        $("#tab3_div").removeClass('active');
         $("#tab2_div").show();
-        $("#tab1_div").hide();
-        $("#tab3_div").hide();
     });
     $("#tab3").click(function() {
-        $("#tab_li_1").removeClass('active');
-        $("#tab_li_2").removeClass('active');
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
         $("#tab_li_3").addClass('active');
-        $("#tab1_div").removeClass('active');
-        $("#tab2_div").removeClass('active');
         $("#tab3_div").addClass('active');
-        $("#tab1_div").hide();
-        $("#tab2_div").hide();
         $("#tab3_div").show();
+    });
+    $("#tab4").click(function() {
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
+        $("#tab_li_4").addClass('active');
+        $("#tab4_div").addClass('active');
+        $("#tab4_div").show();
+    });
+    $("#tab5").click(function() {
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
+        $("#tab_li_5").addClass('active');
+        $("#tab5_div").addClass('active');
+        $("#tab5_div").show();
+    });
+    $("#tab6").click(function() {
+        $('li.tabs').each(function(index) {
+            tabNo = index+1
+            $("#tab_li_"+tabNo).removeClass('active');
+            $("#tab"+tabNo+"_div").removeClass('active');
+            $("#tab"+tabNo+"_div").hide();
+        });
+        $("#tab_li_6").addClass('active');
+        $("#tab6_div").addClass('active');
+        $("#tab6_div").show();
     });
 </script>
