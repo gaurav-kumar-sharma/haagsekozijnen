@@ -358,7 +358,7 @@ if (!isset($info['kleur_binnen'])) {
                                              box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
                                              width: 20mm;
                                              height: 12mm;
-                                             background-color: skyblue;margin-top: 9px;position:absolute;}">
+                                             background-color: skyblue;margin-top: 9px;position:absolute;">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -366,10 +366,220 @@ if (!isset($info['kleur_binnen'])) {
                                              box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
                                              width: 20mm;
                                              height: 12mm;
-                                             background-color: skyblue;margin-top: 9px;position:absolute;}">
+                                             background-color: skyblue;margin-top: 9px;position:absolute;">
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag60" title="draairaam links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image5.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag61" title="draairaam rechts binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image6.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag62" title="draairaam links buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/IMAGE7.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag63" title="draairaam rechts buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image8.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag58" title="draaikiepraam links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image3.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag59" title="draaikiepraam rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image4.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag66" title="stolpraam draaikiep links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image11.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag67" title="stolpraam draaikiep rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image12.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag68" title="stolpraam draai binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image13.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag69" title="stolpraam draai buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image14.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag64" title="valraam" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image9.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag65" title="uitzetraam" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image10.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag70" title="schuifraam links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image15.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag71" title="schuifraam rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image16.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
 <!--                                <div class="row" style="margin-top:2%;">
                                     <div class="col-md-2">
                                         <div style=" 
@@ -467,7 +677,7 @@ if (!isset($info['kleur_binnen'])) {
 
                                         </div>
                                     </div>
-                                </div>-->
+                                </div>
                                 <div class="row" style="margin-top:15%;">
                                     <div class="col-md-2">
                                         <div style="position:absolute; 
@@ -793,12 +1003,211 @@ if (!isset($info['kleur_binnen'])) {
                                             <p class="p_l"> ROOSTER</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
-                        </div>
+                        </div> 
                         <div id="tab2_div" class="tab-pane ">
                             <div id="deuren" style="float:left;margin:10px;">
                                 <div class="row" style="margin-top:2%;">
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag89" title="achterdeur links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image5.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag90" title="achterdeur links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image6.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag91" title="achterdeur links buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/IMAGE7.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag92" title="achterdeur links buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image8.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="margin-top:20%;">
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag89" title="voordeur links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image5.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag90" title="voordeur links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image6.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag91" title="voordeur links buiten open"style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/IMAGE7.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag92" title="voordeur links buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image8.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag97" title="draaikiepdeur links binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image3.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute; 
+                                             "> 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="drag" id="drag98" title="draaikiepdeur rechts binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 10mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image4.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag81" title="stolpdeur draai binnen open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image13.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag83" title="stolpdeur draai buiten open" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image14.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag85" title="stolpdeur draaikiep links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image11.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag86" title="stolpdeur draaikiep rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image12.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:15%;">
+                                    
+                                </div>
+                                
+<!--                                <div class="row" style="margin-top:2%;">
                                     <div class="col-md-2">
                                         <div style="    
                                              border:5px solid #166D1A;
@@ -963,12 +1372,91 @@ if (!isset($info['kleur_binnen'])) {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div> 
                         </div>
                         <div id="tab3_div" class="tab-pane active">
                             <div id="schuifpuien" style="float:left;margin:10px;">
-                                <div class="row"></div></div></div>
+                                <div class="row" style="margin-top: 2%">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag72" title="kiep-hef-schuifpui links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image17.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag73" title="kiep-hef-schuifpui rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image18.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row" style="margin-top: 15%">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag74" title="hautau-hef-schuifpui links" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image15.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-top:15%;">
+
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag75" title="hautau-hef-schuifpui rechts" style="    border: 4px solid #ffffcc;
+                                             width: 20mm;
+                                             height: 20mm;
+                                             background-size: 100% 100%;
+                                             background-image: url(/img/image16.png);
+                                             background-color: skyblue;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             "> 
+                                            <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                    
+                            </div>
+                                
+                        </div>
                         <div id="tab4_div" class="tab-pane active">
                             <div id="plooiwanden" style="float:left;margin:10px;">
                                 <div class="row"></div></div></div>
