@@ -350,7 +350,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-size: 100% 100%;
                                              background:skyblue;
                                              box-shadow: 0 0 1px black;position:absolute;
-                                             "> 
+                                             " Category="2" profilecat="0" hangCat="0" hangSubCat="0" paneelCat="0"> 
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -358,7 +358,7 @@ if (!isset($info['kleur_binnen'])) {
                                              box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
                                              width: 20mm;
                                              height: 12mm;
-                                             background-color: skyblue;margin-top: 9px;position:absolute;">
+                                             background-color: skyblue;margin-top: 9px;position:absolute;" category="8" profilecat="1" hangCat="0" hangSubCat="0" paneelCat=”0”>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -366,7 +366,7 @@ if (!isset($info['kleur_binnen'])) {
                                              box-shadow: 0 0 0 1px #000 inset, 0 0 0 5px #faffe4 inset, 0 0 0 6px #000 inset,0 0 0 10px #faffe4 inset,0 0 0 11px #000 inset;
                                              width: 20mm;
                                              height: 12mm;
-                                             background-color: skyblue;margin-top: 9px;position:absolute;">
+                                             background-color: skyblue;margin-top: 9px;position:absolute;" category="8" profilecat="3" hangCat="0" hangSubCat="0" paneelCat="0">
                                         </div>
                                     </div>
                                 </div>
@@ -380,7 +380,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="1" hangCat="1" hangSubCat="1" paneelCat="0"> 
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -392,7 +392,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="1" hangCat="1" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -404,7 +404,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="2" hangCat="1" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
                                 
@@ -417,7 +417,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="2" hangCat="1" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
                                 </div>
@@ -431,7 +431,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="5" hangCat="1" hangSubCat="2" paneelCat=”0”> 
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -443,7 +443,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="5" hangCat="1" hangSubCat="2" paneelCat=”0”> 
                                         </div>
                                     </div>
                                 </div>
@@ -457,7 +457,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="1" hangCat="1" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -473,7 +473,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="2" hangCat="1" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -489,7 +489,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="1" hangCat="1" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -506,7 +506,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="2" hangCat="1" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -525,7 +525,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="1" hangCat="1" hangSubCat="3" paneelCat=”0”> 
                                         </div>
                                     </div>
                                 </div>
@@ -539,7 +539,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="2" hangCat="1" hangSubCat="4" paneelCat=”0”> 
                                         </div>
                                     </div>
                                 </div>
@@ -553,7 +553,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="5" hangCat="1" hangSubCat="8" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -571,7 +571,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " category="10" profilecat="5" hangCat="1" hangSubCat="8" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -1018,7 +1018,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
 
                                     </div>
@@ -1031,7 +1031,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
 
                                     </div>
@@ -1044,7 +1044,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -1056,7 +1056,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
 
@@ -1071,12 +1071,12 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
 
                                     </div>
                                     <div class="col-md-1">
-                                        <div class="drag" id="drag90" title="voordeur links binnen open" style="    border: 4px solid #ffffcc;
+                                        <div class="drag" id="drag90" title="voordeur rechts binnen open" style="    border: 4px solid #ffffcc;
                                              width: 10mm;
                                              height: 20mm;
                                              background-size: 100% 100%;
@@ -1084,7 +1084,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
 
                                     </div>
@@ -1097,7 +1097,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
                                     <div class="col-md-1">
@@ -1109,7 +1109,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="1" paneelCat=”0”> 
                                         </div>
                                     </div>
 
@@ -1151,7 +1151,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
                                         </div>
@@ -1167,7 +1167,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="5" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
                                         </div>
@@ -1181,7 +1181,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="1" hangCat="2" hangSubCat="6" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -1196,7 +1196,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="2" hangCat="2" hangSubCat="6" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -1376,7 +1376,7 @@ if (!isset($info['kleur_binnen'])) {
                             </div> 
                         </div>
                         <div id="tab3_div" class="tab-pane active">
-                            <div id="schuifpuien" style="float:left;margin:10px;">
+                            <div id="deuren" style="float:left;margin:10px;">
                                 <div class="row" style="margin-top: 2%">
                                     <div class="col-md-2">
                                         <div class="drag" id="drag72" title="kiep-hef-schuifpui links" style="    border: 4px solid #ffffcc;
@@ -2961,4 +2961,5 @@ if (!isset($info['kleur_binnen'])) {
         $("#tab6_div").addClass('active');
         $("#tab6_div").show();
     });
+    $("#tab6").click();
 </script>

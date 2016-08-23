@@ -446,7 +446,10 @@ Configure::write('CategoryList', array(
     'category' => array(),
     'profileCat' => array(
         1 => 'binnen',
-        2 => 'buiten'
+        2 => 'buiten',
+        3 => 'verhuislook',
+        4 => 'plooiwanden',
+        5 => 'kiep-hefschuifpuien'
     ),
     'hangCat' => array(
         1 => 'ramen',
@@ -463,6 +466,7 @@ Configure::write('CategoryList', array(
         5 => 'draai-stolp',
         6 => 'draai-kiep-stolp',
         7 => 'draai-deel',
+        8 => 'kiep-schuifdeel'
     ),
     
     'paneelCat' => array(
