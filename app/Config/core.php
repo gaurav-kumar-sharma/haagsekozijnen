@@ -414,7 +414,37 @@ Configure::write('priceList', array(
             'vlak-nerf-wit-creme' => 35,
             'verdiept-nerf-others' => 40, 
             'vlak-nerf-others' => 40,
-        )
+        ),
+        'draaidelen-verhuislook' => array(
+            'verdiept-glad-wit-creme' => 35,
+            'vlak-glad-wit-creme' => 35,
+            'verdiept-glad-others' => 40, 
+            'vlak-glad-others' => 40,
+            'verdiept-nerf-wit-creme' => 40,
+            'vlak-nerf-wit-creme' => 40,
+            'verdiept-nerf-others' => 45, 
+            'vlak-nerf-others' => 45,
+        ),
+        'draaidelen-plooiwanden' => array(
+            'verdiept-glad-wit-creme' => 35,
+            'vlak-glad-wit-creme' => 35,
+            'verdiept-glad-others' => 40, 
+            'vlak-glad-others' => 40,
+            'verdiept-nerf-wit-creme' => 40,
+            'vlak-nerf-wit-creme' => 40,
+            'verdiept-nerf-others' => 45, 
+            'vlak-nerf-others' => 45,
+        ),
+        'draaidelen-kiep-hefschuifpuien' => array(
+            'verdiept-glad-wit-creme' => 35,
+            'vlak-glad-wit-creme' => 35,
+            'verdiept-glad-others' => 40, 
+            'vlak-glad-others' => 40,
+            'verdiept-nerf-wit-creme' => 40,
+            'vlak-nerf-wit-creme' => 40,
+            'verdiept-nerf-others' => 45, 
+            'vlak-nerf-others' => 45,
+        ),
     ),
     'hang-en-sluitwerk' => array(
         'hang-en-sluitwerk-ramen' => array(
@@ -432,6 +462,9 @@ Configure::write('priceList', array(
         ),
         'hang-en-sluitwerk-plooiwanden' => array(
             'hang-en-sluitwerk-draai-deel ' => 930,
+        ),
+        'hang-en-sluitwerk-kiep-hefschuifpuien' => array(
+            'hang-en-sluitwerk-kiep-schuifdeel' => 900,
         ),
         
     ),
@@ -455,7 +488,7 @@ Configure::write('CategoryList', array(
         1 => 'ramen',
         2 => 'deuren',
         3 => 'plooiwanden',
-        4 => ' kiep-hefschuifpuien'
+        4 => 'kiep-hefschuifpuien'
         
     ),
     'hangSubCat' => array(

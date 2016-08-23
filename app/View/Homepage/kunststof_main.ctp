@@ -1387,7 +1387,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="5" hangCat="4" hangSubCat="8" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -1403,7 +1403,7 @@ if (!isset($info['kleur_binnen'])) {
                                              background-color: skyblue;
                                              box-shadow: 0 0 1px black;
                                              position:absolute;
-                                             "> 
+                                             " Category="10" profilecat="5" hangCat="4" hangSubCat="8" paneelCat=”0”> 
                                             <div style="height:100%;width:50%;border-right:3px solid #ffffcc;">
                                             </div>
 
@@ -1412,7 +1412,7 @@ if (!isset($info['kleur_binnen'])) {
                                     </div>
 
                                 </div>
-                                <div class="row" style="margin-top: 15%">
+<!--                                <div class="row" style="margin-top: 15%">
                                     <div class="col-md-2">
                                         <div class="drag" id="drag74" title="hautau-hef-schuifpui links" style="    border: 4px solid #ffffcc;
                                              width: 20mm;
@@ -1431,9 +1431,9 @@ if (!isset($info['kleur_binnen'])) {
 
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
 
-                                <div class="row" style="margin-top:15%;">
+<!--                                <div class="row" style="margin-top:15%;">
 
                                     <div class="col-md-2">
                                         <div class="drag" id="drag75" title="hautau-hef-schuifpui rechts" style="    border: 4px solid #ffffcc;
@@ -1452,7 +1452,7 @@ if (!isset($info['kleur_binnen'])) {
                                         </div>
                                     </div>
 
-                                </div>
+                                </div>-->
                                     
                             </div>
                                 
@@ -2793,7 +2793,7 @@ if (!isset($info['kleur_binnen'])) {
     
       // Step 1 calculation (category : 4)
     function frameProfileCalculation(height, width, colorArr, catArr) {
-        profileType = 'draaidelen' + catList[catArr['profileCat']];
+        profileType = 'draaidelen-' + catList['profileCat'][catArr['profileCat']];
         priceType = '';
         priceType += extraInfo['sub_sub_cat'].toLowerCase()+'-';
         colorProfile = 'binnen';
@@ -2812,7 +2812,7 @@ if (!isset($info['kleur_binnen'])) {
             } else {
                 priceType += 'others';
             }
-            rate = priceList['profile']['draaidelen-buiten'][priceType];
+            rate = priceList['profile'][profileType][priceType];
             price = (2*(height+width)/1000)*rate;
             return price;
         
