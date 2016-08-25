@@ -31,6 +31,13 @@ if (!isset($info['kleur_binnen'])) {
 <?php if ($info) { ?>
     <script type="text/javascript">
         priceStack = {}
+        
+        heightRestrictArray = new Array()
+        heightRestrictArray[0] = 'kiep-hef-schuifpui links';
+        heightRestrictArray[1] = 'kiep-hef-schuifpui rechts';
+        heightRestrictArray[2] = 'hautau-hef-schuifpui links';
+        heightRestrictArray[3] = 'hautau-hef-schuifpui rechts';
+
         var frame_mapping = new Array()
         frame_mapping['drag3'] = 'vast raam enkele kader';
         frame_mapping['drag5'] = 'draairaam links binnen open';
@@ -91,19 +98,23 @@ if (!isset($info['kleur_binnen'])) {
                             $('[data-popup="popup-1"]').fadeOut();
                         }
                     });
+                    
                 }
             });
             //Make element droppable
             $("#frame").droppable({
                 drop: function(ev, ui) {
                     if (ui.helper.attr('id').search(/drag[0-9]/) != -1) {
+                        frameTitle = ui.helper.attr('title')
+                        
                         counter++;
                         var element = $(ui.draggable).clone();
                         element.addClass("tempclass");
                         $(this).append(element);
 //                        $(".tempclass").attr("id", "deel" + counter);
                         draggedFrameId = ui.helper.attr('id')
-                        frameTitle = ui.helper.attr('title')
+                        
+                        
 //                        frameName = frame_mapping[draggedFrameId]
 //                        frameIdByName = frameName.replace(/\ /g, "-")
 //                        localStorage.setItem('frameNameID',frameIdByName)
@@ -1458,11 +1469,50 @@ if (!isset($info['kleur_binnen'])) {
                                 
                         </div>
                         <div id="tab4_div" class="tab-pane active">
-                            <div id="plooiwanden" style="float:left;margin:10px;">
-                                <div class="row"></div></div></div>
+                            <div id="deuren" style="float:left;margin:10px;">
+                                <div class="row"></div>
+                                <?php if (($extraInfo['composition'] == 'Aluminium' || $extraInfo['composition'] == 'Kunststof') && ($extraInfo['sub_sub_cat'] == 'Vlak')) {?>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="drag" id="drag80" style="    border: 4px solid #ffffcc;
+                                             width: 42mm;
+                                             height: 20mm;
+
+                                             background-color: #ffffcc;
+                                             box-shadow: 0 0 1px black;
+                                             position:absolute;
+                                             " category="10" profilecat="4" hangCat="3" hangSubCat="7" paneelCat=”0”> 
+                                            <div style="height:100%;width:24%;margin-right:2px;background-color: skyblue;float:left; ">
+                                            </div>
+
+                                            <div style="height:100%;width:24%;background-color: skyblue;float:left;background-size: 100% 100%;
+                                                 background-image: url(/img/image19.png);margin-right:2px;">
+                                            </div>
+                                            <div style="height:100%;width:24%;background-color: skyblue;float:left;background-size: 100% 100%;
+                                                 background-image: url(/img/image20new.png);margin-right:2px;">
+                                            </div>
+                                            <div style="height:100%;width:24%;background-color: skyblue;float:left;">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                    <?php }?>
+                            </div></div>
                         <div id="tab5_div" class="tab-pane active">
-                            <div id="diverse" style="float:left;margin:10px;">
-                                <div class="row"></div></div></div>
+                            <div id="deuren" style="float:left;margin:10px;">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="drag" id="drag51" style=" 
+                                             width: 30mm;
+                                             height:2.5mm;
+                                             background:#969696;
+                                             box-shadow: 0 0 1px black;position:absolute;
+                                             "> 
+                                        </div>
+                                    </div>
+                                </div></div></div>
                         <div id="tab6_div" class="tab-pane active">
                             <div id="deuren" style="float:left;margin:10px;">
                                 <div class="row">
@@ -2651,6 +2701,11 @@ if (!isset($info['kleur_binnen'])) {
                 e.preventDefault();
                 return false;
             } else {
+                frameName = localStorage.getItem('frameTitle');
+                if ($.inArray(frameName, heightRestrictArray) != -1 && $("#frame_hoogte").val() > 2300) {
+                            alert("NIET MOGELIJK")
+                            return false;
+                }
                 var framId = localStorage.getItem('framId');
                 breedle_f = Math.round($("#frame_breedle").val() / 40);
                 hoogte_f = Math.round($("#frame_hoogte").val() / 40);
@@ -2777,6 +2832,7 @@ if (!isset($info['kleur_binnen'])) {
         width = <?php echo $info['breedle']; ?>;
         height =  <?php echo $info['hoogte']; ?>;
         nameInPriceList = '';
+        console.log(extraInfo)
             nameInPriceList += extraInfo['sub_sub_cat'].toLowerCase()+'-';
             nameInPriceList += extraInfo['draaidelen_buitenkader_color_type']+'-';
             if (extraInfo['draaidelen_buitenkader_composition_color'] == 'wit' || 
@@ -2785,6 +2841,7 @@ if (!isset($info['kleur_binnen'])) {
             } else {
                 nameInPriceList += extraInfo['others'];
             }
+            
             rate = priceList['profile']['draaidelen-buiten'][nameInPriceList];
             
             price = (2*(height+width)/1000)*rate;
@@ -2814,6 +2871,7 @@ if (!isset($info['kleur_binnen'])) {
             }
             rate = priceList['profile'][profileType][priceType];
             price = (2*(height+width)/1000)*rate;
+            alert(price);
             return price;
         
     }
@@ -2826,8 +2884,11 @@ if (!isset($info['kleur_binnen'])) {
         hangType = 'hang-en-sluitwerk-';
         hangType += catList['hangSubCat'][catArr['hangSubCat']];
         rate = priceList['hang-en-sluitwerk'][hangCat][hangType];
+        alert(hangCat)
+        alert(hangType)
         console.log(priceList);
         price = quantity*rate;
+        alert(price)
         return price;
     }
     
@@ -2835,6 +2896,7 @@ if (!isset($info['kleur_binnen'])) {
     function glassCalculation(height, width) {
         glassCostPerUnit = 75;
         price = (glassCostPerUnit*height*width)/(1000*1000);
+        alert(price)
         return price;
     }
     // width calculation (category : 11)

@@ -100,15 +100,15 @@ class HomepageController extends AppController {
             $sub_sub_cat_name = $this->SubSubCategory->find('first', array('conditions' => array('SubSubCategory.id' => $sub_cat_id)));
         }
         if ($this->request->is(array('post', 'put'))) {
-            
-            if ($composition_id == 1) {
                 $this->loadModel('Composition');
         $this->loadModel('SubCategory');
         $this->loadModel('SubSubCategory');
         $this->loadModel('CompositionColor'); 
         $this->loadModel('HoutType');
         $this->loadModel('ColorType');
-        $this->loadModel('Client');
+        $this->loadModel('Client');    
+            if ($composition_id == 1) {
+        
         $extraInfo = array();
         $extraInfo['composition'] = $this->Composition->find('first', array('conditions' => array("Composition.id" => $composition_id)));
         $extraInfo['sub_cat'] = $this->SubCategory->find('first', array('conditions' => array("SubCategory.id" => $sub_cat_id)));
@@ -145,6 +145,23 @@ class HomepageController extends AppController {
 //                        )
 //                );
             } else if ($composition_id == 2) {
+                         $extraInfo = array();
+        $extraInfo['composition'] = $this->Composition->find('first', array('conditions' => array("Composition.id" => $composition_id)));
+//        $extraInfo['sub_cat'] = $this->SubCategory->find('first', array('conditions' => array("SubCategory.id" => $sub_cat_id)));
+        $extraInfo['sub_sub_cat'] = $this->SubSubCategory->find('first', array('conditions' => array("SubSubCategory.id" => ($sub_sub_cat_id+1))));
+//        $extraInfo['buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['buitenkader_color_type_id'])));
+        $extraInfo['buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['buitenkader_composition_color_id'])));
+//        $extraInfo['draaidelen_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['draaidelen_buitenkader_color_type_id'])));
+//        $extraInfo['binnenzijde_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['binnenzijde_buitenkader_color_type_id'])));
+        $extraInfo['draaidelen_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['draaidelen_buitenkader_composition_color_id'])));
+        $extraInfo['binnenzijde_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['binnenzijde_buitenkader_composition_color_id'])));
+//        $extraInfo['draaidelen_binnenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['draaidelen_binnenkader_color_type_id'])));
+       // $binnenzijde_binnenkader_color_type = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['binnenzijde_binnenkader_color_type_id'])));
+        $extraInfo['draaidelen_binnenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['draaidelen_binnenkader_composition_color_id'])));
+        //EXTRA
+        $extraInfo['draaidelen_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => 1)));
+        $this->Session->write('extraInfo', $extraInfo);
+        $this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
                 print $composition_id;die;
                 $this->redirect(
                         array(
@@ -158,8 +175,33 @@ class HomepageController extends AppController {
                             )
                         )
                 );
-            } else { 
-                print $composition_id;die;
+            } else {
+//                print_r($this->request->data);die;
+//                print_r($sub_cat_id);die;
+                $extraInfo = array();
+        $extraInfo['composition'] = $this->Composition->find('first', array('conditions' => array("Composition.id" => $composition_id)));
+        $extraInfo['sub_sub_cat'] = $this->SubCategory->find('first', array('conditions' => array("SubCategory.id" => $sub_cat_id)));
+//        $extraInfo['sub_sub_cat'] = $this->SubSubCategory->find('first', array('conditions' => array("SubSubCategory.id" => $sub_sub_cat_id)));
+//        $extraInfo['buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['buitenkader_color_type_id'])));
+        $extraInfo['buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['buitenkader_composition_color_id'])));
+//        $extraInfo['draaidelen_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['draaidelen_buitenkader_color_type_id'])));
+//        $extraInfo['binnenzijde_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['binnenzijde_buitenkader_color_type_id'])));
+        $extraInfo['draaidelen_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['draaidelen_buitenkader_composition_color_id'])));
+        $extraInfo['binnenzijde_buitenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['binnenzijde_buitenkader_composition_color_id'])));
+//        $extraInfo['draaidelen_binnenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->data['Composition']['draaidelen_binnenkader_color_type_id'])));
+       // $binnenzijde_binnenkader_color_type = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['binnenzijde_binnenkader_color_type_id'])));
+        $extraInfo['draaidelen_binnenkader_composition_color'] = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->data['Composition']['draaidelen_binnenkader_composition_color_id'])));
+        //EXTRA
+        $extraInfo['draaidelen_buitenkader_color_type'] = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => 1)));
+        
+        $extraInfo['buitenkader_hout_type'] = $this->HoutType->find('first', array('conditions' => array('HoutType.id' => $this->request->data['Composition']['buitenkader_hout_type_id'])));
+        $extraInfo['draaidelen_buitenkader_hout_type'] = $this->HoutType->find('first', array('conditions' => array('HoutType.id' => $this->request->data['Composition']['draaidelen_buitenkader_hout_type_id'])));
+        $extraInfo['binnenzijde_buitenkader_hout_type'] = $this->HoutType->find('first', array('conditions' => array('HoutType.id' => $this->request->data['Composition']['draaidelen_buitenkader_hout_type_id'])));
+        $extraInfo['draaidelen_binnenkader_hout_type'] = $this->HoutType->find('first', array('conditions' => array('HoutType.id' => $this->request->data['Composition']['draaidelen_buitenkader_hout_type_id'])));
+        $extraInfo['buitenkader_hout_type'] = $this->HoutType->find('first', array('conditions' => array('HoutType.id' => $this->request->data['Composition']['draaidelen_buitenkader_hout_type_id'])));
+//                print_r($extraInfo);die;
+        $this->Session->write('extraInfo', $extraInfo);
+        $this->redirect(array('controller'=>'homepage','action'=>'kunststof_main'));
                 $this->redirect(
                         array(
                             'action' => 'final_view', $composition_id, $sub_cat_id, $sub_sub_cat_id,
@@ -225,27 +267,57 @@ class HomepageController extends AppController {
                                 ->setCellValue('D25', date('m-d-Y', strtotime($client_data['Client']['datum'])))
                                 ->setCellValue('B27', $client_data['Client']['ref_number']);
         
-        $buitenkader_color_type = $extraInfo['buitenkader_color_type'];
-        $buitenkader_composition_color = $extraInfo['buitenkader_composition_color'];
-        $draaidelen_buitenkader_color_type = $extraInfo['draaidelen_buitenkader_color_type'];
-        $binnenzijde_buitenkader_color_type = $extraInfo['binnenzijde_buitenkader_color_type'];
-        $draaidelen_buitenkader_composition_color = $extraInfo['draaidelen_buitenkader_composition_color'];
-        $binnenzijde_buitenkader_composition_color = $extraInfo['binnenzijde_buitenkader_composition_color'];
-        $draaidelen_binnenkader_color_type = $extraInfo['draaidelen_binnenkader_color_type'];
-       // $binnenzijde_binnenkader_color_type = $this->ColorType->find('first', array('conditions' => array('ColorType.id' => $this->request->query['binnenzijde_binnenkader_color_type_id'])));
-        $draaidelen_binnenkader_composition_color = $extraInfo['draaidelen_binnenkader_composition_color'];
-        // $binnenzijde_binnenkader_composition_color = $this->CompositionColor->find('first', array('conditions' => array('CompositionColor.id' => $this->request->query['binnenzijde_binnenkader_composition_color_id'])));
-        $excel2->getActiveSheet()->setCellValue('B29',  $buitenkader_color_type['ColorType']['color_type'])
-                                ->setCellValue('D29', $buitenkader_composition_color['CompositionColor']['composition_color']);
+        if ($composition =='Kunststof') {
         
-        $excel2->getActiveSheet()->setCellValue('B30',  $draaidelen_buitenkader_color_type['ColorType']['color_type'])
-                                ->setCellValue('D30', $draaidelen_buitenkader_composition_color['CompositionColor']['composition_color']);
-            
-        $excel2->getActiveSheet()->setCellValue('B31',  $draaidelen_binnenkader_color_type['ColorType']['color_type'])
-                                ->setCellValue('D31',  $draaidelen_binnenkader_composition_color['CompositionColor']['composition_color']);
+            $buitenkader_color_type = $extraInfo['buitenkader_color_type'];
+            $buitenkader_composition_color = $extraInfo['buitenkader_composition_color'];
+            $draaidelen_buitenkader_color_type = $extraInfo['draaidelen_buitenkader_color_type'];
+            $binnenzijde_buitenkader_color_type = $extraInfo['binnenzijde_buitenkader_color_type'];
+            $draaidelen_buitenkader_composition_color = $extraInfo['draaidelen_buitenkader_composition_color'];
+            $binnenzijde_buitenkader_composition_color = $extraInfo['binnenzijde_buitenkader_composition_color'];
+            $draaidelen_binnenkader_color_type = $extraInfo['draaidelen_binnenkader_color_type'];
+            $draaidelen_binnenkader_composition_color = $extraInfo['draaidelen_binnenkader_composition_color'];
+            $excel2->getActiveSheet()->setCellValue('B29',  $buitenkader_color_type)
+                                    ->setCellValue('D29', $buitenkader_composition_color);
 
-        $excel2->getActiveSheet()->setCellValue('B32', $binnenzijde_buitenkader_color_type['ColorType']['color_type'])
-                                ->setCellValue('D32', $binnenzijde_buitenkader_composition_color['CompositionColor']['composition_color']);
+            $excel2->getActiveSheet()->setCellValue('B30',  $draaidelen_buitenkader_color_type)
+                                    ->setCellValue('D30', $draaidelen_buitenkader_composition_color);
+
+            $excel2->getActiveSheet()->setCellValue('B31',  $draaidelen_binnenkader_color_type)
+                                    ->setCellValue('D31',  $draaidelen_binnenkader_composition_color);
+
+            $excel2->getActiveSheet()->setCellValue('B32', $binnenzijde_buitenkader_color_type)
+                                ->setCellValue('D32', $binnenzijde_buitenkader_composition_color);
+        } else if($composition =='Aluminium') {
+            $buitenkader_composition_color = $extraInfo['buitenkader_composition_color'];
+            $draaidelen_buitenkader_composition_color = $extraInfo['draaidelen_buitenkader_composition_color'];
+            $binnenzijde_buitenkader_composition_color = $extraInfo['binnenzijde_buitenkader_composition_color'];
+            $draaidelen_binnenkader_composition_color = $extraInfo['draaidelen_binnenkader_composition_color'];
+            
+            $excel2->getActiveSheet()->setCellValue('D29', $buitenkader_composition_color);
+            $excel2->getActiveSheet()->setCellValue('D30', $draaidelen_buitenkader_composition_color);
+            $excel2->getActiveSheet()->setCellValue('D31',  $draaidelen_binnenkader_composition_color);
+            $excel2->getActiveSheet()->setCellValue('D32', $binnenzijde_buitenkader_composition_color);
+        } elseif ($composition =='Hout') {
+            $buitenkader_hout_type = $extraInfo['buitenkader_hout_type'];
+            $buitenkader_composition_color = $extraInfo['buitenkader_composition_color'];
+            $draaidelen_buitenkader_hout_type = $extraInfo['draaidelen_buitenkader_hout_type'];
+            $binnenzijde_buitenkader_hout_type = $extraInfo['binnenzijde_buitenkader_hout_type'];
+            $draaidelen_buitenkader_composition_color = $extraInfo['draaidelen_buitenkader_composition_color'];
+            $binnenzijde_buitenkader_composition_color = $extraInfo['binnenzijde_buitenkader_composition_color  '];
+            $draaidelen_binnenkader_hout_type = $extraInfo['draaidelen_binnenkader_hout_type'];
+            $draaidelen_binnenkader_composition_color = $extraInfo['draaidelen_binnenkader_composition_color'];
+            $excel2->getActiveSheet()->setCellValue('B29',  $buitenkader_hout_type)
+						->setCellValue('D29', $buitenkader_composition_color);
+            $excel2->getActiveSheet()->setCellValue('B30',  $draaidelen_buitenkader_hout_type)
+				->setCellValue('D30', $draaidelen_buitenkader_composition_color);
+            
+            $excel2->getActiveSheet()->setCellValue('B31',   $draaidelen_binnenkader_hout_type)
+                                ->setCellValue('D31',  $draaidelen_binnenkader_composition_color);
+
+            $excel2->getActiveSheet()->setCellValue('B32', $binnenzijde_buitenkader_hout_type)
+                                   ->setCellValue('D32', $binnenzijde_buitenkader_composition_color);
+        }
         $file_name =  time() . ".xlsx";
 	$this->loadModel('ExcelFile');
         $this->loadModel('Notification');
@@ -722,12 +794,18 @@ class HomepageController extends AppController {
         foreach ($extraInfo as $mainKey=> $values) {
             $formattedInfo[$mainKey] = '';
             foreach ($values as $key => $value) {
+                if ($mainKey== 'sub_sub_cat' && isset($value['sub_cat_name']) )
+                    $formattedInfo[$mainKey] = $value['sub_cat_name'];
                 if (isset($value['color_type'])) {
                     $formattedInfo[$mainKey] = $value['color_type'];
                 } else if (isset($value['composition_color'])) {
                     $formattedInfo[$mainKey] = $value['composition_color'];
                 } else if (isset($value[$mainKey.'_name'])) {
                     $formattedInfo[$mainKey] = $value[$mainKey.'_name'];
+                } else if (isset($value['hout_type'])) {
+                    $formattedInfo[$mainKey] = $value['hout_type'];
+                } else if (isset($value['hout_type'])) {
+                    $formattedInfo[$mainKey] = $value['hout_type'];
                 } 
             } 
         }

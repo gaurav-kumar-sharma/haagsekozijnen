@@ -461,7 +461,7 @@ Configure::write('priceList', array(
             'hang-en-sluitwerk-draai-kiep-stolp' => 575,
         ),
         'hang-en-sluitwerk-plooiwanden' => array(
-            'hang-en-sluitwerk-draai-deel ' => 930,
+            'hang-en-sluitwerk-draai-deel' => 930,
         ),
         'hang-en-sluitwerk-kiep-hefschuifpuien' => array(
             'hang-en-sluitwerk-kiep-schuifdeel' => 900,
